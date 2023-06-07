@@ -15,23 +15,27 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MediumConstrait(),
+      home: const BoxConstraint(),
     );
   }
 }
 
-class MediumConstrait extends StatelessWidget {
-  const MediumConstrait({super.key});
+class BoxConstraint extends StatelessWidget {
+  const BoxConstraint({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      // nilai dari Aligment bisa digantik dengan alignment konstan
-      alignment: Alignment(-1, -1),
-      child: Container(
-        color: Colors.red,
-        width: 100,
-        height: 100,
+    return Center(
+      child: ConstrainedBox(
+        constraints: BoxConstraints(
+          minWidth: 70,
+          minHeight: 70,
+          maxWidth: 150,
+          maxHeight: 150,
+        ),
+        child: Container(
+          color: Colors.red,
+        ),
       ),
     );
   }
