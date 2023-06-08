@@ -2,8 +2,7 @@
 
 constraints dapat memengaruhi posisi dan ukuran dari widget
 
---
-
+Pegunaan:
 Width
 Height
 Center
@@ -12,24 +11,17 @@ alignment
 alignment: Alignment(-1, -1),
 alignment: Alignment.bottomRight,
 child dalam child pakai padding
+BoxConstraints
+UnconstrainedBox
 
----
-
-Ketika sebuah Container tidak didefinisikan ukurannya, maka Container akan menggunakan ukuran dari child widget-nya, dan jika Container tidak memiliki widget, maka Container tersebut akan mengambil ukuran yang maksimal.
+```
+Root Widget -> Parent -> child 1 -> child 2
+```
 
 **Container memiliki parameter padding yang dapat memberikan jarak antara border dengan konten di dalamnya.**
 
 ---
-
-Kita tahu bahwa root widget dari Flutter memberikan constraints agar widget di bawahnya berukuran sama dengan ukuran layar. Namun, UnconstrainedBox memungkinkan widget di bawahnya untuk memiliki ukuran berapa pun. Sehingga, Container dapat menentukan ukuran dengan bebas bahkan hingga melebihi ukuran layar sekalipun.
-
-Namun, karena ukuran yang melebihi layar maka Flutter akan memberikan overflow warning.
-
----
-
-Widget seperti Row sama seperti UnconstrainedBox, karenaRow tidak memberikan constraints terhadapa children nya, tapi membiarkan children widget menentukan ukuran yang di inginkan.
-
-## Solusi
+## Solusi Overflow
 
 Solusi ketika ada Overflow Warning :
 - Bungkus Container ke dalam **Widget Expanded**
@@ -40,4 +32,34 @@ Perbedaan Flexible dan Expanded adalah widget Flexible memungkinkan child widget
 
 Sementara, child widget dari Expanded harus memiliki ukuran sesuai ukuran Expanded.
 
+---
 
+### Gesture Detector
+
+- Membuat widget dapat merespon gestur tap.
+- Membuat widget dapat merespon gestur double tap.
+- Membuat widget dapat merespon gestur long press.
+- Membuat widget dapat merespon gestur drag & pan.
+
+**Beberapa method seperti :**
+Container
+BoxDecoration
+bottomNavigationBar
+MediaQuery
+onVerticalDragUpdate
+DragUpdateDetails
+onHorizontalDragUpdate
+
+**Widget :**
+Stack() 
+
+Widget Stack adalah widget untuk layouting yang mirip dengan Row atau Column, bedanya Stack menyusun widget secara bertumpuk. Karena Stack dapat memiliki beberapa child widget, maka gunakanlah parameter children.
+
+Secara default posisi widget di bawah Stack akan berada di pojok kiri atas. 
+Anda dapat mengatur posisi child widget dari Stack dengan widget Positioned.
+
+Positioned memiliki parameter untuk mengatur jarak widget dengan sisi atas, bawah, kanan, mau pun kiri. Untuk itu, kita akan mengubah posisi Container agar berada di tengah. 
+
+**Pan**
+
+Gesture drag terbatas pada satu pergerakan secara horizontal atau vertikal. Agar widget dapat merespon drag secara vertikal dan horizontal bersamaan gunakan gesture pan.
